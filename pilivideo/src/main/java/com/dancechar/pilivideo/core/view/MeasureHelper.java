@@ -10,7 +10,7 @@ import com.dancechar.pilivideo.sdk.model.VideoScaleMode;
 import java.lang.ref.WeakReference;
 
 /**
- * @author netease
+ * @author xyj155
  */
 public final class MeasureHelper {
 

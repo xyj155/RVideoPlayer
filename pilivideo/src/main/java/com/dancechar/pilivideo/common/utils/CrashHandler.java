@@ -7,7 +7,7 @@ import com.dancechar.pilivideo.common.log.LogUtil;
 
 
 /**
- * @author netease
+ * @author xyj155
  */
 
 public class CrashHandler {
@@ -25,7 +25,7 @@ public class CrashHandler {
             public void uncaughtException(Thread thread, Throwable ex) {
                 try {
                     String stack = Log.getStackTraceString(ex);
-                    if (stack.contains("com.netease")) {
+                    if (stack.contains("com.xyj155")) {
                         // 只记录我们自己的崩溃
                         LogUtil.error("************* crash *************\n** Thread: " + context.getPackageName() + "/" + thread.getName() + " **", ex);
                     }

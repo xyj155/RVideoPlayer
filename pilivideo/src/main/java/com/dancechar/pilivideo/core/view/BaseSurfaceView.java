@@ -15,7 +15,7 @@ import com.dancechar.pilivideo.sdk.model.VideoScaleMode;
 
 
 /**
- * @author netease
+ * @author xyj155
  */
 
 public class BaseSurfaceView extends SurfaceView implements IRenderView, SurfaceHolder.Callback {

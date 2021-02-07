@@ -4,9 +4,9 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.netease.neliveplayer.sdk.NELivePlayer;
-import com.netease.neliveplayer.sdk.model.NEDynamicLoadingConfig;
-import com.netease.neliveplayer.sdk.model.NESDKConfig;
+import com.xyj155.neliveplayer.sdk.NELivePlayer;
+import com.xyj155.neliveplayer.sdk.model.NEDynamicLoadingConfig;
+import com.xyj155.neliveplayer.sdk.model.NESDKConfig;
 
 import java.util.Map;
 

@@ -9,6 +9,6 @@
     <com.dancechar.pilivideo.RVideoView
         android:layout_width="match_parent"
         android:id="@+id/videoView"
-        android:layout_height="400dp" />
+        android:layout_height="450dp" />
 
 </LinearLayout>

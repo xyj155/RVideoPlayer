@@ -13,7 +13,7 @@ import com.dancechar.pilivideo.sdk.model.VideoScaleMode;
 
 
 /**
- * @author netease
+ * @author xyj155
  * 单一TextureView
  * 适用于播放页面只有一个TextureView时，支持后台播放
  *

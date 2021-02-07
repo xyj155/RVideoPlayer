@@ -8,20 +8,13 @@ import com.dancechar.pilivideo.sdk.constant.CauseCode;
 import com.dancechar.pilivideo.sdk.model.AutoRetryConfig;
 import com.dancechar.pilivideo.sdk.model.StateInfo;
 import com.dancechar.pilivideo.sdk.model.VideoScaleMode;
-import com.netease.neliveplayer.proxy.gslb.NEGslbResultListener;
-import com.netease.neliveplayer.proxy.gslb.NEGslbServerModel;
-import com.netease.neliveplayer.sdk.NELivePlayer;
-import com.netease.neliveplayer.sdk.model.NEAudioPcmConfig;
-import com.netease.neliveplayer.sdk.model.NEAudioTrackInfo;
-import com.netease.neliveplayer.sdk.model.NEMediaRealTimeInfo;
+import com.xyj155.neliveplayer.proxy.gslb.NEGslbResultListener;
+import com.xyj155.neliveplayer.proxy.gslb.NEGslbServerModel;
+import com.xyj155.neliveplayer.sdk.NELivePlayer;
+import com.xyj155.neliveplayer.sdk.model.NEAudioPcmConfig;
+import com.xyj155.neliveplayer.sdk.model.NEAudioTrackInfo;
+import com.xyj155.neliveplayer.sdk.model.NEMediaRealTimeInfo;
 
-/**
- * 网易云信直播拉流播放器接口
- * 基于播放器SDK封装的直播相关的接口
- * <p>
- *
- * @author netease
- */
 
 public abstract class LivePlayer {
 

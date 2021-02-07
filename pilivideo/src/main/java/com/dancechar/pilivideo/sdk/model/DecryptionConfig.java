@@ -6,7 +6,7 @@ import com.dancechar.pilivideo.sdk.constant.DecryptionConfigCode;
 /**
  * 点播视频解密配置
  * 只适用于点播
- * @author netease
+ * @author xyj155
  */
 public class DecryptionConfig {
 

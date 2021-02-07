@@ -8,9 +8,9 @@ import com.dancechar.pilivideo.sdk.constant.PreloadStatusType;
 import com.dancechar.pilivideo.sdk.model.SDKInfo;
 import com.dancechar.pilivideo.sdk.model.SDKOptions;
 import com.dancechar.pilivideo.sdk.model.VideoOptions;
-import com.netease.neliveplayer.sdk.NELivePlayer;
-import com.netease.neliveplayer.sdk.NEMediaDataSource;
-import com.netease.neliveplayer.sdk.model.NESDKConfig;
+import com.xyj155.neliveplayer.sdk.NELivePlayer;
+import com.xyj155.neliveplayer.sdk.NEMediaDataSource;
+import com.xyj155.neliveplayer.sdk.model.NESDKConfig;
 
 import java.util.ArrayList;
 import java.util.Map;

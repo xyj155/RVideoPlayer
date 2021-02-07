@@ -3,7 +3,7 @@ package com.dancechar.pilivideo.sdk.model;
 /**
  * 视频渲染时的缩放/裁减模式
  * <p>
- * @author netease
+ * @author xyj155
  */
 public enum VideoScaleMode {
     NONE, // 原始大小

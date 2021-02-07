@@ -1,10 +1,10 @@
 package com.dancechar.pilivideo.sdk.model;
 
-import com.netease.neliveplayer.sdk.model.NEMediaInfo;
+import com.xyj155.neliveplayer.sdk.model.NEMediaInfo;
 
 /**
  * 媒体信息类
- * @author netease
+ * @author xyj155
  */
 
 public class MediaInfo {

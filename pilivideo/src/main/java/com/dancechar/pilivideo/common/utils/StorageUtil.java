@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import java.io.IOException;
 
 /**
- * @author netease
+ * @author xyj155
  */
 
 public class StorageUtil {

@@ -6,17 +6,11 @@ import com.dancechar.pilivideo.core.player.PlayerManagerImpl;
 import com.dancechar.pilivideo.sdk.model.SDKInfo;
 import com.dancechar.pilivideo.sdk.model.SDKOptions;
 import com.dancechar.pilivideo.sdk.model.VideoOptions;
-import com.netease.neliveplayer.sdk.NEMediaDataSource;
+import com.xyj155.neliveplayer.sdk.NEMediaDataSource;
 
 import java.util.ArrayList;
 import java.util.Map;
 
-/**
- * 网易云信视频播放器管理类
- * 基于播放器SDK封装的全局操作接口
- * <p>
- * @author netease
- */
 public class PlayerManager {
     /**
      * 初始化SDK,使用播放器时必须先进行初始化才能进行后续操作。
@@ -101,7 +95,7 @@ public class PlayerManager {
 
     /**
      * 查询预加载拉流链接地址的结果信息
-     * @return Map<String,Integer> String是链接地址，Integer是状态,状态码参考 {@link com.netease.neliveplayer.sdk.constant.NEPreloadStatusType}
+     * @return Map<String,Integer> String是链接地址，Integer是状态,状态码参考 {@link com.xyj155.neliveplayer.sdk.constant.NEPreloadStatusType}
      */
     public static Map<String,Integer> queryPreloadUrls(){
         return  PlayerManagerImpl.queryPreloadUrls();

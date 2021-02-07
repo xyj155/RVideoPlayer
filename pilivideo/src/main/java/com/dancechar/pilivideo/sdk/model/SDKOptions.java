@@ -1,13 +1,13 @@
 package com.dancechar.pilivideo.sdk.model;
 
-import com.netease.neliveplayer.proxy.config.NEPlayerConfig;
-import com.netease.neliveplayer.sdk.NELivePlayer;
-import com.netease.neliveplayer.sdk.model.NEDynamicLoadingConfig;
+import com.xyj155.neliveplayer.proxy.config.NEPlayerConfig;
+import com.xyj155.neliveplayer.sdk.NELivePlayer;
+import com.xyj155.neliveplayer.sdk.model.NEDynamicLoadingConfig;
 
 /**
  * SDK配置信息类
  *
- * @author netease
+ * @author xyj155
  */
 
 public class SDKOptions {

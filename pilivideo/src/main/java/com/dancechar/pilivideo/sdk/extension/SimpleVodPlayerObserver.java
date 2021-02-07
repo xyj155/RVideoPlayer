@@ -5,7 +5,7 @@ import com.dancechar.pilivideo.sdk.VodPlayerObserver;
 import com.dancechar.pilivideo.sdk.model.MediaInfo;
 
 /**
- * @author netease
+ * @author xyj155
  */
 
 public abstract class SimpleVodPlayerObserver implements VodPlayerObserver {

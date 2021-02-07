@@ -4,7 +4,7 @@ package com.dancechar.pilivideo.sdk.model;
 /**
  * 视频播放配置项
  *
- * @author netease
+ * @author xyj155
  */
 
 public class VideoOptions {

@@ -1,11 +1,11 @@
 package com.dancechar.pilivideo.sdk.model;
 
 
-import com.netease.neliveplayer.sdk.constant.NEBufferStrategy;
+import com.xyj155.neliveplayer.sdk.constant.NEBufferStrategy;
 
 /**
  * 视频缓冲策略
- * @author netease
+ * @author xyj155
  */
 
 public enum VideoBufferStrategy {

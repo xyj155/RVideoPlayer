@@ -1,6 +1,6 @@
 package com.dancechar.pilivideo.sdk.constant;
 
-import com.netease.neliveplayer.sdk.constant.NEPreloadStatusType;
+import com.xyj155.neliveplayer.sdk.constant.NEPreloadStatusType;
 
 /**
  * 预调度结果状态.

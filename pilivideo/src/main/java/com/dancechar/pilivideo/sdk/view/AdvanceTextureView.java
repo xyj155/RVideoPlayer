@@ -9,7 +9,7 @@ import com.dancechar.pilivideo.core.view.BaseTextureView;
 /**
  * TextureView控件
  * 对TextureView做了封装，可直接用于播放器播放，支持后台播放
- * @author netease
+ * @author xyj155
  */
 
 public class AdvanceTextureView extends BaseTextureView {

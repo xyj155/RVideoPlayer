@@ -1,10 +1,10 @@
 package com.dancechar.pilivideo.sdk.model;
 
-import com.netease.neliveplayer.sdk.model.NEAutoRetryConfig;
+import com.xyj155.neliveplayer.sdk.model.NEAutoRetryConfig;
 
 /**
  * 自动重试配置类
- * @author netease
+ * @author xyj155
  */
 public class AutoRetryConfig extends NEAutoRetryConfig {
 

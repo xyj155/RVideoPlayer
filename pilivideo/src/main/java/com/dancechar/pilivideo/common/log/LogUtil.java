@@ -7,7 +7,7 @@ import com.dancechar.pilivideo.common.utils.StorageUtil;
 
 
 /**
- * @author netease
+ * @author xyj155
  */
 
 public class LogUtil {

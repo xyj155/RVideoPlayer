@@ -5,12 +5,6 @@ import com.dancechar.pilivideo.sdk.model.MediaInfo;
 import com.dancechar.pilivideo.sdk.model.StateInfo;
 
 
-/**
- * 直播拉流播放器状态/事件回调函数观察者
- * 基于播放器SDK封装的直播相关的状态/事件回调
- * <p>
- * @author netease
- */
 
 public interface LivePlayerObserver {
 
@@ -30,7 +24,7 @@ public interface LivePlayerObserver {
      * [重要]视频播放器出现错误
      * 开发者可以在此结束播放、给予用户出错提示、开启重新播放按钮等
      *
-     * @param code  错误码 {@link com.netease.neliveplayer.sdk.constant.NEErrorType}
+     * @param code  错误码 {@link com.xyj155.neliveplayer.sdk.constant.NEErrorType}
      *              如果 code=-9999 表示视频码流解析失败，此时音频播放正常，视频可能无画面，开发者可以针对此错误码添加处理逻辑，例如退出、重新播放。
      * @param extra 错误附加信息
      */

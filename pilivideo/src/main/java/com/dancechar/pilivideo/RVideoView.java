@@ -47,9 +47,9 @@ import com.dancechar.pilivideo.sdk.model.VideoScaleMode;
 import com.dancechar.pilivideo.sdk.view.AdvanceTextureView;
 import com.dancechar.pilivideo.weight.AVLoadingIndicatorView;
 import com.dancechar.pilivideo.weight.ZzHorizontalProgressBar;
-import com.netease.neliveplayer.sdk.NELivePlayer;
-import com.netease.neliveplayer.sdk.model.NEAutoRetryConfig;
-import com.netease.neliveplayer.sdk.model.NEDataSourceConfig;
+import com.xyj155.neliveplayer.sdk.NELivePlayer;
+import com.xyj155.neliveplayer.sdk.model.NEAutoRetryConfig;
+import com.xyj155.neliveplayer.sdk.model.NEDataSourceConfig;
 
 
 import java.io.IOException;
@@ -59,7 +59,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import static com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions.withCrossFade;
-import static com.netease.neliveplayer.sdk.constant.NEBufferStrategy.NELPTOPSPEED;
+import static com.xyj155.neliveplayer.sdk.constant.NEBufferStrategy.NELPTOPSPEED;
 
 public class RVideoView extends FrameLayout implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, LivePlayerObserver, NELivePlayer.OnCurrentRealTimeListener, NELivePlayer.OnCurrentPositionListener, NELivePlayer.OnCompletionListener, AudioManager.OnAudioFocusChangeListener {
     public final static int MEDIA_CODEC_SW_DECODE = 0;

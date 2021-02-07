@@ -1,15 +1,8 @@
 package com.dancechar.pilivideo.sdk;
 
 import com.dancechar.pilivideo.sdk.model.DataSourceConfig;
-import com.netease.neliveplayer.sdk.NELivePlayer;
+import com.xyj155.neliveplayer.sdk.NELivePlayer;
 
-
-/**
- * 网易云信视频点播播放器接口
- * 基于播放器SDK封装的点播相关的接口
- * <p>
- * @author netease
- */
 
 public abstract class VodPlayer extends LivePlayer {
 

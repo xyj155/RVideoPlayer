@@ -8,7 +8,7 @@ import com.dancechar.pilivideo.sdk.model.VideoScaleMode;
 /**
  * 渲染View公共接口
  * <p>
- * @author netease
+ * @author xyj155
  */
 
 public interface IRenderView {

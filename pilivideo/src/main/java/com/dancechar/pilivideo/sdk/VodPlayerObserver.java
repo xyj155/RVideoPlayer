@@ -1,14 +1,9 @@
 package com.dancechar.pilivideo.sdk;
 
 
-import com.netease.neliveplayer.sdk.constant.NEKeyVerifyResultType;
+import com.xyj155.neliveplayer.sdk.constant.NEKeyVerifyResultType;
 
-/**
- * 点播播放器状态/事件回调函数观察者
- * 基于播放器SDK封装的点播相关的状态/事件回调
- * <p>
- * @author netease
- */
+
 
 public interface VodPlayerObserver extends LivePlayerObserver {
 

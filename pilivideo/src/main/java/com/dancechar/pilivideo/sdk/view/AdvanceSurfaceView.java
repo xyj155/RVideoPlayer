@@ -9,7 +9,7 @@ import com.dancechar.pilivideo.core.view.BaseSurfaceView;
 /**
  * SurfaceView控件
  * 对SurfaceView做了封装，可直接用于播放器播放
- * @author netease
+ * @author xyj155
  */
 
 public class AdvanceSurfaceView extends BaseSurfaceView {

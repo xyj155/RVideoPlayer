@@ -2,7 +2,7 @@ package com.dancechar.pilivideo.sdk.model;
 
 /**
  * 缓存配置信息
- * @author netease
+ * @author xyj155
  */
 public class CacheConfig {
     /**

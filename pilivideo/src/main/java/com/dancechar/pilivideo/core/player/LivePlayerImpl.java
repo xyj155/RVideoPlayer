@@ -3,11 +3,11 @@ package com.dancechar.pilivideo.core.player;
 import android.content.Context;
 
 import com.dancechar.pilivideo.sdk.model.VideoOptions;
-import com.netease.neliveplayer.sdk.NEMediaDataSource;
+import com.xyj155.neliveplayer.sdk.NEMediaDataSource;
 
 
 /**
- * @author netease
+ * @author xyj155
  */
 
 public class LivePlayerImpl extends AdvanceLivePlayer {

@@ -7,7 +7,7 @@ import com.dancechar.pilivideo.sdk.model.MediaInfo;
 /**
  * 播放器状态回调观察者
  * <p>
- * @author netease
+ * @author xyj155
  */
 
 public abstract class SimpleLivePlayerObserver implements LivePlayerObserver {

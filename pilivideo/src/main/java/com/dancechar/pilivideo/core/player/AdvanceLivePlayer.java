@@ -5,11 +5,11 @@ import android.content.Context;
 import com.dancechar.pilivideo.common.log.LogUtil;
 import com.dancechar.pilivideo.sdk.LivePlayer;
 import com.dancechar.pilivideo.sdk.model.VideoOptions;
-import com.netease.neliveplayer.sdk.NEMediaDataSource;
+import com.xyj155.neliveplayer.sdk.NEMediaDataSource;
 
 
 /**
- * @author netease
+ * @author xyj155
  * <p>
  * 播放器高级扩展类，在基础扩展类上面封装播放器前后台切换逻辑：
  * <p>

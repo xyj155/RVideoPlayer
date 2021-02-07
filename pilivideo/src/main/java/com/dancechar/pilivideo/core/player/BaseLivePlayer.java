@@ -23,18 +23,18 @@ import com.dancechar.pilivideo.sdk.model.MediaInfo;
 import com.dancechar.pilivideo.sdk.model.StateInfo;
 import com.dancechar.pilivideo.sdk.model.VideoOptions;
 import com.dancechar.pilivideo.sdk.model.VideoScaleMode;
-import com.netease.neliveplayer.proxy.gslb.NEGslbResultListener;
-import com.netease.neliveplayer.proxy.gslb.NEGslbServerModel;
-import com.netease.neliveplayer.sdk.NELivePlayer;
-import com.netease.neliveplayer.sdk.NEMediaDataSource;
-import com.netease.neliveplayer.sdk.constant.NEErrorType;
-import com.netease.neliveplayer.sdk.constant.NEPlayStatusType;
-import com.netease.neliveplayer.sdk.model.NEAudioPcmConfig;
-import com.netease.neliveplayer.sdk.model.NEAudioTrackInfo;
-import com.netease.neliveplayer.sdk.model.NECacheConfig;
-import com.netease.neliveplayer.sdk.model.NEDataSourceConfig;
-import com.netease.neliveplayer.sdk.model.NEDecryptionConfig;
-import com.netease.neliveplayer.sdk.model.NEMediaRealTimeInfo;
+import com.xyj155.neliveplayer.proxy.gslb.NEGslbResultListener;
+import com.xyj155.neliveplayer.proxy.gslb.NEGslbServerModel;
+import com.xyj155.neliveplayer.sdk.NELivePlayer;
+import com.xyj155.neliveplayer.sdk.NEMediaDataSource;
+import com.xyj155.neliveplayer.sdk.constant.NEErrorType;
+import com.xyj155.neliveplayer.sdk.constant.NEPlayStatusType;
+import com.xyj155.neliveplayer.sdk.model.NEAudioPcmConfig;
+import com.xyj155.neliveplayer.sdk.model.NEAudioTrackInfo;
+import com.xyj155.neliveplayer.sdk.model.NECacheConfig;
+import com.xyj155.neliveplayer.sdk.model.NEDataSourceConfig;
+import com.xyj155.neliveplayer.sdk.model.NEDecryptionConfig;
+import com.xyj155.neliveplayer.sdk.model.NEMediaRealTimeInfo;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * @author netease
+ * @author xyj155
  * <p>
  * 播放器基础扩展类，封装了播放器SDK接口操作的核心流程：
  * <p>

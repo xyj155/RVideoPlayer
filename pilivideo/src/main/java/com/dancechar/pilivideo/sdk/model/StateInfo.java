@@ -5,7 +5,7 @@ import com.dancechar.pilivideo.sdk.LivePlayer;
 
 /**
  * 状态信息类
- * @author netease
+ * @author xyj155
  */
 
 public class StateInfo {

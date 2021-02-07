@@ -3,7 +3,7 @@ package com.dancechar.pilivideo.sdk.constant;
 /**
  * 播放器错误码/导致播放器停止的原因
  * <p>
- * @author netease
+ * @author xyj155
  */
 
 public interface CauseCode {
@@ -39,51 +39,51 @@ public interface CauseCode {
     int CODE_VIDEO_STOPPED_AS_ON_COMPLETION = -10104;
 
     /**
-     * HTTP连接失败，参考{@link com.netease.neliveplayer.sdk.constant.NEErrorType}
+     * HTTP连接失败，参考{@link com.xyj155.neliveplayer.sdk.constant.NEErrorType}
      */
     int CODE_HTTP_CONNECT_ERROR = -1001;
     /**
-     * RTMP连接失败，参考{@link com.netease.neliveplayer.sdk.constant.NEErrorType}
+     * RTMP连接失败，参考{@link com.xyj155.neliveplayer.sdk.constant.NEErrorType}
      */
     int CODE_RTMP_CONNECT_ERROR = -1002;
     /**
-     * 解析失败，参考{@link  com.netease.neliveplayer.sdk.constant.NEErrorType}
+     * 解析失败，参考{@link  com.xyj155.neliveplayer.sdk.constant.NEErrorType}
      */
     int CODE_STREAM_PARSE_ERROR = -1003;
     /**
-     * 缓冲失败，参考{@link  com.netease.neliveplayer.sdk.constant.NEErrorType}
+     * 缓冲失败，参考{@link  com.xyj155.neliveplayer.sdk.constant.NEErrorType}
      */
     int CODE_BUFFERING_ERROR = -1004;
     /**
-     * 音频相关操作初始化失败，参考{@link  com.netease.neliveplayer.sdk.constant.NEErrorType}
+     * 音频相关操作初始化失败，参考{@link  com.xyj155.neliveplayer.sdk.constant.NEErrorType}
      */
     int CODE_AUDIO_OPEN_ERROR = -2001;
     /**
-     * 视频相关操作初始化失败，参考{@link  com.netease.neliveplayer.sdk.constant.NEErrorType}
+     * 视频相关操作初始化失败，参考{@link  com.xyj155.neliveplayer.sdk.constant.NEErrorType}
      */
     int CODE_VIDEO_OPEN_ERROR = -2002;
     /**
-     * 没有音视频流，参考{@link  com.netease.neliveplayer.sdk.constant.NEErrorType}
+     * 没有音视频流，参考{@link  com.xyj155.neliveplayer.sdk.constant.NEErrorType}
      */
     int CODE_STREAM_IS_NULL = -3001;
     /**
-     * 音频解码失败，参考{@link  com.netease.neliveplayer.sdk.constant.NEErrorType}
+     * 音频解码失败，参考{@link  com.xyj155.neliveplayer.sdk.constant.NEErrorType}
      */
     int CODE_AUDIO_DECODE_ERROR = -4001;
     /**
-     * 视频解码失败，参考{@link  com.netease.neliveplayer.sdk.constant.NEErrorType}
+     * 视频解码失败，参考{@link  com.xyj155.neliveplayer.sdk.constant.NEErrorType}
      */
     int CODE_VIDEO_DECODE_ERROR = -4002;
     /**
-     * 音频播放失败，参考{@link  com.netease.neliveplayer.sdk.constant.NEErrorType}
+     * 音频播放失败，参考{@link  com.xyj155.neliveplayer.sdk.constant.NEErrorType}
      */
     int CODE_AUDIO_RENDER_ERROR = -5001;
     /**
-     * 视频播放失败，参考{@link  com.netease.neliveplayer.sdk.constant.NEErrorType}
+     * 视频播放失败，参考{@link  com.xyj155.neliveplayer.sdk.constant.NEErrorType}
      */
     int CODE_VIDEO_RENDER_ERROR = -5002;
     /**
-     * 未知错误，参考{@link  com.netease.neliveplayer.sdk.constant.NEErrorType}
+     * 未知错误，参考{@link  com.xyj155.neliveplayer.sdk.constant.NEErrorType}
      */
     int CODE_UNKNOWN_ERROR = -10000;
 }

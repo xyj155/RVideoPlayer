@@ -1,6 +1,6 @@
 package com.dancechar.pilivideo.sdk.constant;
 
-import com.netease.neliveplayer.sdk.constant.NEDecryptionConfigCode;
+import com.xyj155.neliveplayer.sdk.constant.NEDecryptionConfigCode;
 
 /**
  * 解密选项
