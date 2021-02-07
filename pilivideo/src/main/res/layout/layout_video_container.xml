@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_thumbs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/iv_poster"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:gravity="center"
+        android:id="@+id/ll_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    </LinearLayout>
+
+    <com.dancechar.pilivideo.weight.AVLoadingIndicatorView
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:indicatorColor="#ffffff"
+        app:indicatorName="BallPulseSyncIndicator"
+        app:maxHeight="50dp"
+        app:maxWidth="50dp" />
+    <FrameLayout
+        android:id="@+id/fl_complete"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <include layout="@layout/layout_video_controller" />
+
+    <com.dancechar.pilivideo.weight.ZzHorizontalProgressBar
+        android:id="@+id/sb_bottom_video"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:visibility="invisible"
+        app:zpb_bg_color="#d8d8d8"
+        app:zpb_max="100"
+        app:zpb_padding="0dp"
+        app:zpb_pb_color="#FF547E"
+        app:zpb_progress="30" />
+
+
+</FrameLayout>

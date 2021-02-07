@@ -1,0 +1,4 @@
+include ':pilivideo'
+//include ':playerkit'
+include ':app'
+rootProject.name = "PiliVideo"

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="#56000000"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textColor="#000"
+    android:text="完成界面"
+    android:textSize="55dp"
+    android:gravity="center"/>
+</RelativeLayout>

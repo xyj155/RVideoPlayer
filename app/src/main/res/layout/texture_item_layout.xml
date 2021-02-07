@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/render_layout"
+    android:layout_height="match_parent">
+
+    <com.netease.neliveplayer.playerkit.sdk.view.AdvanceTextureView
+        android:id="@+id/live_texture"
+        android:layout_width="wrap_content"
+        android:visibility="visible"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <ImageView
+        android:id="@+id/render_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="#000000"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/buffering_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:text="加载中。。。"
+            android:textColor="#FFFFFFFF"
+            android:textSize="13dp" />
+
+        <ProgressBar
+            style="@android:style/Widget.ProgressBar.Large"
+            android:layout_width="50dip"
+            android:layout_height="50dip" />
+    </LinearLayout>
+</FrameLayout>
