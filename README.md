@@ -15,4 +15,38 @@
 **完成播放自定义**|**可以在视频播放完成后弹出自定义的布局或者广告内容**
 **更多**|**暂停前后台切换不黑屏；**
 
+## 使用方法
 
+### 1、添加module到项目中；
+    implementation project(":pilivideo")
+### 2、创建RVideoView到布局当中；
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      tools:context=".MainActivity">
+
+      <com.dancechar.pilivideo.RVideoView
+        android:layout_width="match_parent"
+        android:id="@+id/videoView"
+        android:layout_height="450dp" />
+
+    </LinearLayout>
+### 3、设置播放地址以及封面图片、宽高比
+    播放地址：#.setPlayUrl("http://dy-video-upload/f0c5be07c3ff61e30c0f37b033d07d91.mp4");
+    视频封面：#.setThumbs("https://f0c5be07c3ff61e30c0f37b033d07d91.mp4?x-oss-process=video/snapshot,t_1000,f_png,w_500,m_fast");
+### 4、开始播放
+    #.start()
+ 
+ 
+ ## 其他设置：
+ 1、设置播放完成布局【类似播放完成弹出分享面板】：
+    #.setCompleteController(new Test(this));
+ 2、设置倍速：
+    #.setSpeed(int)
+ 3、暂停播放：
+    #.pause();
+ 4、销毁播放器：
+    #.release();
