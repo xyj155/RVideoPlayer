@@ -5,7 +5,7 @@
 类型 | 功能
 -------- | ---
 **缓存**|**边播边缓存，使用了VideoCache。**
-**协议**|**h263\4\5、Https、concat、rtsp、hls、rtmp、crypto、mpeg等等。**
+**协议**|**h263\4\5、Http、concat、rtsp、hls、rtmp、crypto、mpeg等等。**
 **倍速播放**|**可以实现自定义的倍速播放**
 **帧图**|**视频第一帧、视频帧截图功能。**
 **播放**|**列表播放、列表连续播放、视频本身rotation旋转属性、快播和慢播、网络视频加载速度。**
@@ -16,7 +16,8 @@
 **更多**|**暂停前后台切换不黑屏；**
 
 ## 使用方法
-
+### 先在APP里面初始化SDK：
+    PlayerSDK.init();
 ### 1、添加module到项目中；
     implementation project(":pilivideo")
 ### 2、创建RVideoView到布局当中；
