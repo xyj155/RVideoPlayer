@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -284,6 +283,7 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
             showControl();
             isSeekBarShow = true;
             cbPlay.setChecked(true);
+            vodPlayer.setMute(false);
             vodPlayer.start();
             flComplete.setVisibility(GONE);
             hideControl();
@@ -307,9 +307,11 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
      */
     public void release() {
         if (vodPlayer != null) {
-            vodPlayer.stop();
-            isPrepare = false;
+            vodPlayer.setMute(true);
+            vodPlayer.setBufferSize(20 * 1024 * 1024);
             vodPlayer.seekTo(0);
+            isPrepare = false;
+            vodPlayer.pause();
             flParent.post(new Runnable() {
                 @Override
                 public void run() {
@@ -319,11 +321,10 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
                     cbPlay.setVisibility(VISIBLE);
                 }
             });
-
-            vodPlayer = null;
         }
 
     }
+
 
     public void setThumbs(String thumbs) {
         Glide.with(this).asBitmap().load(thumbs)
@@ -365,6 +366,19 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
                 pause();
             else
                 start();
+        } else if (v.getId() == R.id.parent) {
+            Log.i(TAG, "onClick: ==================");
+            if (isPrepare) {
+                if (isSeekBarShow) {
+                    hideControlNoTime();
+                } else {
+                    showControl();
+                    hideControl();
+                }
+            } else {
+                start();
+            }
+
         }
     }
 
@@ -391,26 +405,6 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
         release();
     }
 
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            Log.i(TAG, "onTouchEvent: =====");
-            if (isPrepare) {
-                if (isSeekBarShow) {
-                    hideControlNoTime();
-                } else {
-                    showControl();
-                    hideControl();
-                }
-            } else {
-                start();
-            }
-
-
-        }
-        return true;
-    }
 
     private boolean isSeekBarShow = false;
 
@@ -520,6 +514,7 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
         vodPlayer.registerPlayerCurrentPositionListener(100, this, true);
         vodPlayer.registerCompleteListener(this, true);
         cbPlay.setOnClickListener(this);
+        flParent.setOnClickListener(this);
         seekBar.setOnSeekBarChangeListener(this);
     }
 
