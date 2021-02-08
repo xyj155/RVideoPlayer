@@ -1,18 +1,13 @@
 package com.dancechar.pilivideo;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MotionEvent;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -30,9 +25,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
-
 import com.dancechar.pilivideo.controller.CompleteController;
-import com.dancechar.pilivideo.observe.ShortPlayerObserver;
 import com.dancechar.pilivideo.sdk.LivePlayerObserver;
 import com.dancechar.pilivideo.sdk.PlayerManager;
 import com.dancechar.pilivideo.sdk.VodPlayer;
@@ -47,19 +40,13 @@ import com.dancechar.pilivideo.sdk.model.VideoScaleMode;
 import com.dancechar.pilivideo.sdk.view.AdvanceTextureView;
 import com.dancechar.pilivideo.weight.AVLoadingIndicatorView;
 import com.dancechar.pilivideo.weight.ZzHorizontalProgressBar;
-import com.xyj155.neliveplayer.sdk.NELivePlayer;
-import com.xyj155.neliveplayer.sdk.model.NEAutoRetryConfig;
-import com.xyj155.neliveplayer.sdk.model.NEDataSourceConfig;
+import com.netease.neliveplayer.sdk.NELivePlayer;
+import com.netease.neliveplayer.sdk.model.NEAutoRetryConfig;
 
-
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 import static com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions.withCrossFade;
-import static com.xyj155.neliveplayer.sdk.constant.NEBufferStrategy.NELPTOPSPEED;
 
 public class RVideoView extends FrameLayout implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, LivePlayerObserver, NELivePlayer.OnCurrentRealTimeListener, NELivePlayer.OnCurrentPositionListener, NELivePlayer.OnCompletionListener, AudioManager.OnAudioFocusChangeListener {
     public final static int MEDIA_CODEC_SW_DECODE = 0;
@@ -86,6 +73,7 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
     private AutoRetryConfig autoRetryConfig;
     private VodPlayer vodPlayer;
     private AudioManager mAudioManager;
+    private boolean isPrepare = false;
 
     //    原始尺寸、适应屏幕、全屏铺满、16:9、4:3
     public RVideoView(@NonNull Context context) {
@@ -129,9 +117,11 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
     public void initConfig() {
 
         autoRetryConfig = new AutoRetryConfig();
-        autoRetryConfig.count = 0;
-        autoRetryConfig.delayDefault = 3000;
+        autoRetryConfig.count = 3;
+        autoRetryConfig.delayDefault = 100;
+        autoRetryConfig.delayArray = new long[]{100, 500, 3000};
         autoRetryConfig.retryListener = onRetryListener;
+
 
     }
 
@@ -139,11 +129,13 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
 
 
         options = new VideoOptions();
-        options.bufferSize = 50 * 1024 * 1024;
-        options.hardwareDecode = false;
+        options.bufferSize = 20 * 1024 * 1024;
+        options.hardwareDecode = true;
         options.bufferStrategy = VideoBufferStrategy.ANTI_JITTER;
         options.loopCount = 0;
         options.isAccurateSeek = true;
+        options.isSyncOpen = true;
+        options.isPlayLongTimeBackground = true;
 
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.cacheConfig = new CacheConfig(true, null);
@@ -231,10 +223,21 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
 //        }
     }
 
-    public static void reset() {
-//        if (RVideoView.vodPlayer != null) {
-//            RVideoView.vodPlayer.stop();
-//        }
+    public void reset() {
+        if (vodPlayer != null) {
+            vodPlayer.reset();
+            isPrepare = false;
+            vodPlayer.seekTo(0);
+            flParent.post(new Runnable() {
+                @Override
+                public void run() {
+                    sbBottomBar.setProgress(0);
+                    seekBar.setProgress(0);
+                    cbPlay.setChecked(false);
+                    cbPlay.setVisibility(VISIBLE);
+                }
+            });
+        }
     }
 
     /**
@@ -264,28 +267,6 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
 //        instance = mVideo;
     }
 
-//    public AudioManager.OnAudioFocusChangeListener onAudioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
-//
-//
-//        @Override
-//        public void onAudioFocusChange(int focusChange) {
-//            Log.i(TAG, "onAudioFocusChange: ========");
-//            switch (focusChange) {
-//                case AudioManager.AUDIOFOCUS_GAIN:
-//                    Log.i(TAG, "AUDIOFOCUS_LOSS [onAudioFocusChange: ");
-//                    break;
-//                case AudioManager.AUDIOFOCUS_LOSS:
-////                    reset();
-//                    Log.d(TAG, "AUDIOFOCUS_LOSS [" + this.hashCode() + "]");
-//                    break;
-//                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
-//                    Log.d(TAG, "AUDIOFOCUS_LOSS_TRANSIENT [" + this.hashCode() + "]");
-//                    break;
-//                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
-//                    break;
-//            }
-//        }
-//    };
 
     /**
      * 开始播放
@@ -295,13 +276,17 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
         if (flContainer.getChildCount() == 0) {
             flContainer.removeAllViews();
             flContainer.addView(surfaceView);
+            Log.i(TAG, "start: ==================");
         }
         mAudioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
         mAudioManager.requestAudioFocus(this, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
         if (vodPlayer != null) {
+            showControl();
+            isSeekBarShow = true;
             cbPlay.setChecked(true);
             vodPlayer.start();
             flComplete.setVisibility(GONE);
+            hideControl();
         }
 
     }
@@ -323,7 +308,18 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
     public void release() {
         if (vodPlayer != null) {
             vodPlayer.stop();
-            cbPlay.setChecked(false);
+            isPrepare = false;
+            vodPlayer.seekTo(0);
+            flParent.post(new Runnable() {
+                @Override
+                public void run() {
+                    sbBottomBar.setProgress(0);
+                    seekBar.setProgress(0);
+                    cbPlay.setChecked(false);
+                    cbPlay.setVisibility(VISIBLE);
+                }
+            });
+
             vodPlayer = null;
         }
 
@@ -355,65 +351,12 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
         view.setVisibility(loadingVisible);
     }
 
-//    @Override
-//    public boolean onError(int i) {
-//        Toast.makeText(getContext(), String.format("播放出错：%s", i), Toast.LENGTH_SHORT).show();
-//        hideShowView(avLoadingIndicatorView, GONE);
-//        cbPlay.setChecked(false);
-//        flComplete.setVisibility(GONE);
-//        return false;
-//    }
-//
-//
-//    @Override
-//    public void onCompletion() {
-//        cbPlay.setChecked(false);
-//        flComplete.setVisibility(VISIBLE);
-//        hideShowView(avLoadingIndicatorView, GONE);
-//
-//    }
-//
-//    @Override
-//    public void onSeekComplete() {
-//        Log.i(TAG, "onSeekComplete: ");
-//        hideControlNoTime();
-//
-//    }
-
 
     public void setCompleteController(CompleteController completeController) {
         flComplete.removeAllViews();
         flComplete.addView(completeController);
     }
 
-//    @Override
-//    public void onPrepared(int i) {
-//        cbPlay.setChecked(true);
-//
-//        flComplete.setVisibility(GONE);
-//        hideShowView(avLoadingIndicatorView, VISIBLE);
-//    }
-
-//
-//    @Override
-//    public void onInfo(int i, int i1) {
-//        long duration = plVideoView.getDuration();
-//        Log.i(TAG, "onInfo:duration==============" + duration);
-//        seekBar.setMax((int) duration);
-//        sbBottomBar.setMax((int) duration);
-//        tvTotal.setText(generateTime(duration));
-//        Log.d(TAG, "onInfo() called with: i = [" + i + "], i1 = [" + i1 + "]");
-//        hideShowView(avLoadingIndicatorView, GONE);
-//        seekBar.setProgress((int) plVideoView.getCurrentPosition());
-//        tvCurrent.setText(generateTime(plVideoView.getCurrentPosition()));
-//        sbBottomBar.setProgress((int) plVideoView.getCurrentPosition());
-//        flComplete.setVisibility(GONE);
-//    }
-//
-//    @Override
-//    public void onImageCaptured(byte[] bytes) {
-//
-//    }
 
     @Override
     public void onClick(View v) {
@@ -445,23 +388,28 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-
+        release();
     }
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            if (isSeekBarShow) {
-                hideControlNoTime();
+            Log.i(TAG, "onTouchEvent: =====");
+            if (isPrepare) {
+                if (isSeekBarShow) {
+                    hideControlNoTime();
+                } else {
+                    showControl();
+                    hideControl();
+                }
             } else {
-                showControl();
-                hideControl();
+                start();
             }
 
 
         }
-        return false;
+        return true;
     }
 
     private boolean isSeekBarShow = false;
@@ -497,12 +445,13 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
     @Override
     public void onPreparing() {
         Log.i(TAG, "onPreparing: ");
-
+        isPrepare = true;
 
     }
 
     @Override
     public void onPrepared(MediaInfo mediaInfo) {
+        isPrepare = true;
         long duration = vodPlayer.getDuration();
         tvTotal.setText(generateTime(duration));
         sbBottomBar.setMax((int) duration);
@@ -512,17 +461,18 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
 
     @Override
     public void onError(int code, int extra) {
+        Log.d(TAG, "onError() called with: code = [" + code + "], extra = [" + extra + "]");
 
     }
 
     @Override
     public void onFirstVideoRendered() {
-
+        Log.i(TAG, "onFirstVideoRendered: ");
     }
 
     @Override
     public void onFirstAudioRendered() {
-
+        Log.d(TAG, "onFirstAudioRendered() called");
     }
 
     @Override
@@ -532,12 +482,12 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
 
     @Override
     public void onBufferingEnd() {
-
+        Log.d(TAG, "onBufferingEnd() called");
     }
 
     @Override
     public void onBuffering(int percent) {
-
+        Log.d(TAG, "onBuffering() called with: percent = [" + percent + "]");
     }
 
     @Override
@@ -552,7 +502,7 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
 
     @Override
     public void onHttpResponseInfo(int code, String header) {
-
+        Log.d(TAG, "onHttpResponseInfo() called with: code = [" + code + "], header = [" + header + "]");
     }
 
     @Override
@@ -577,6 +527,7 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
     public void onCurrentRealTime(long l) {
         tvCurrent.setText(generateTime(l));
         seekBar.setProgress((int) l);
+        isPrepare = true;
         sbBottomBar.setProgress((int) l);
     }
 
@@ -592,7 +543,8 @@ public class RVideoView extends FrameLayout implements View.OnClickListener, See
             case AudioManager.AUDIOFOCUS_GAIN:
                 break;
             case AudioManager.AUDIOFOCUS_LOSS:
-                stop();
+//                reset();
+                release();
                 break;
             case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
                 try {
